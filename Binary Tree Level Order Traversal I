@@ -15,15 +15,12 @@ public:
     void completeVector(vector<vector<int>>& v , TreeNode* root,int level){
         if(!root) return;
         
-         // Ensure the current level exists in the vector
         if (v.size() == level) {
             v.push_back(vector<int>());
         }
 
-        // Add the current node's value to the vector at the current level
         v[level].push_back(root->val);
 
-        // Recursively traverse the left and right subtrees
         completeVector(v, root->left, level + 1);
         completeVector(v, root->right, level + 1);
     }
