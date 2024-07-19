@@ -12,10 +12,10 @@
 class Solution {
 public:
 
-    void completeVector(vector<vector<int>>& v , TreeNode* root, int level){
+    void completeVector(vector<vector<int>>& v , TreeNode* root,int level){
         if(!root) return;
         
-        // Ensure the current level exists in the vector
+         // Ensure the current level exists in the vector
         if (v.size() == level) {
             v.push_back(vector<int>());
         }
@@ -27,18 +27,10 @@ public:
         completeVector(v, root->left, level + 1);
         completeVector(v, root->right, level + 1);
     }
-    void reverse(vector<vector<int>>& v){
-        for(int i = 0 ; i < v.size()/2 ; i ++){
-            vector<int> tmp = v[i];
-            v[i]=v[v.size()-i-1];
-            v[v.size()-i-1] = tmp;
-        }
-    }
-    vector<vector<int>> levelOrderBottom(TreeNode* root) {
+    vector<vector<int>> levelOrder(TreeNode* root) {
         vector<vector<int>> v;
         if(!root) return v;
         completeVector(v,root,0);
-        reverse(v);
         return v;
     }
 };
